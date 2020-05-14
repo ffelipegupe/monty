@@ -37,8 +37,15 @@ typedef struct instruction_s
 } instruction_t;
 
 void push_h(stack_t **stack, unsigned int line_number);
-void free_(char *buf, stack_t **stack, FILE *file);
-void free_pointer(char **tok, int height);
-
+void pall_h(stack_t **stack, unsigned int line_number);
+void swap_h(stack_t **stack, unsigned int line_number);
+void nop_h(stack_t **stack, unsigned int line_number);
+void pop_h(stack_t **stack, unsigned int line_number);
+void pint_h(stack_t **stack, unsigned int line_number);
+void get_opcode(stack_t **stack, unsigned int line_number, char *func);
+void free_list(stack_t *stack);
+void parse(char *buff, stack_t **stack, unsigned int line_number);
+int check_digit(int chr);
+void add_h(stack_t **stack, unsigned int line_number);
 
 #endif /*__MONTY__H*/
