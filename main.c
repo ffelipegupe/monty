@@ -1,76 +1,38 @@
 #include "monty.h"
-stack_t *stack = NULL;
+exp glob = {NULL, NULL, NULL};
 
 /**
  * main - main function
- * @argc: argument count
- * @argv: arguments vector
- * Return: 1
+ * @argc: argument count.
+ * @argv: arguments vector.
+ * Return: EXIT SUCcESS on success; EXIT FAILURE otherwise.
 */
-int main(int argc, const char *argv[])
-{
-	FILE *file;
-	char *buf = NULL;
-	size_t buf_size = 80;
-	int j = 1;
 
+int main(int argc, char *argv[])
+{
+	size_t len = 32;
+	ssize_t read;
+	unsigned int line_number = 0;
+	stack_t *stack;
+
+	stack = NULL;
 	if (argc != 2)
 	{
-		fprintf(stderr, "USAGE: monty file\n");
+		write(STDERR_FILENO, "USAGE: monty file\n", 18);
 		exit(EXIT_FAILURE);
 	}
-	if (argv[1] == NULL)
-		return (0);
-	file = fopen(argv[1], "r");
-	if (file == NULL)
+	glob.fil = fopen(argv[1], "r");
+	if (!glob.fil)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
-	while (getline(&buf, &buf_size, file) != -1)
+	while ((read = getline(&glob.buf, &len, glob.fil)) != EOF)
 	{
-		if (buf[0] == '#')
-			continue;
-		printErrors(callFunction(buf, j), j, buf, file);
-		j++;
+		line_number++;
+		split(glob.buf, &stack, line_number);
 	}
-	free_(buf, file);
-	return (0);
-}
-
-/**
- * free_ - function that frees the stack/queue
- * @buf: buffer to free
- * @file: File
-*/
-void free_(char *buf, stack_t **stack, FILE *file)
-{
-	free(buf);
-	stack_t *temp;
-
-	while (*stack != NULL)
-	{
-		temp = *stack;
-		*stack = temp->next;
-		free(temp);
-	}
-	free(*stack);
-	fclose(file);
-}
-
-/**
- * free_pointer - function that frees a double pointer
- * @tok : to be free
- * @height : size of the mtr
-*/
-void free_pointer(char **tok, int height)
-{
-	int i = 0;
-
-	for (i = 0; i < height; i++)
-		if (tok[i] != NULL)
-		{
-			free(tok[i]);
-		}
-	free(tok);
+	free_list
+    (stack);
+	exit(EXIT_SUCCESS);
 }
