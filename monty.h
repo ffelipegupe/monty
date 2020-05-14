@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include <ctype.h>
+#include <unistd.h>
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -35,6 +35,24 @@ typedef struct instruction_s
         char *opcode;
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
+
+/**
+ * struct monty - take the data, buffer and file to export
+ * @data: Tokenized data
+ * @buf: buffer to getline
+ * @fil: file descriptor to open and close
+ *
+ * Description: data, buffer and file to export
+ * for stack, queues, LIFO, FIFO Holberton project
+ */
+typedef struct monty
+{
+	char *data;
+	char *buf;
+	FILE *fil;
+} extgl;
+
+extern extgl glob;
 
 void push_h(stack_t **stack, unsigned int line_number);
 void pall_h(stack_t **stack, unsigned int line_number);
