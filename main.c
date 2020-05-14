@@ -1,5 +1,5 @@
 #include "monty.h"
-exp glob = {NULL, NULL, NULL};
+extgl glob = {NULL, NULL, NULL};
 
 /**
  * main - main function
