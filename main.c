@@ -32,7 +32,6 @@ int main(int argc, char *argv[])
 		line_number++;
 		split(glob.buf, &stack, line_number);
 	}
-	free_list
-    (stack);
+	free_list(stack);
 	exit(EXIT_SUCCESS);
 }
