@@ -39,7 +39,7 @@ void push_h(stack_t **stack, unsigned int line_number)
 		free_list((*stack));
 		free(new_node);
 		exit(EXIT_FAILURE); }
-	new_node->n = num;
+	new_node->n = dig;
 	new_node->next = *stack;
 	new_node->prev = NULL;
 	tmp = *stack;
