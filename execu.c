@@ -10,7 +10,7 @@
 
 void get_opcode(stack_t **stack, unsigned int line_number, char *func)
 {
-	int i = 0;
+    int i = 0;
 
 	instruction_t ops_cmd[] = {
 		{"push", push_h},
@@ -22,7 +22,7 @@ void get_opcode(stack_t **stack, unsigned int line_number, char *func)
 		{"nop", nop_h},
 		{NULL, NULL}
 	};
-
+	
 	while (ops_cmd[i].opcode)
 	{
 		if (strcmp(ops_cmd[i].opcode, func) == 0)
@@ -43,7 +43,7 @@ void get_opcode(stack_t **stack, unsigned int line_number, char *func)
 /**
  * free_list - function that frees a list.
  * @stack: list to be freed.
- *
+ * 
  * Return: nothing.
  */
 
@@ -57,8 +57,7 @@ void free_list(stack_t *stack)
 		free(stack);
 		stack = tmp;
 	}
-	fclose(batm.fil);
-	free(batm.buf);
+	fclose(glob.fil);
+	free(glob.buf);
 }
 
-}
