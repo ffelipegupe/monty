@@ -35,8 +35,8 @@ void get_opcode(stack_t **stack, unsigned int line_number, char *func)
 	if (!ops_cmd[i].opcode)
 	{
 		fprintf(stderr, "L%d: unknown instruction %s\n",
-			line_number, name);
+			line_number, func);
 		free_list((*stack));
 		exit(EXIT_FAILURE);
 	}
-
+}
