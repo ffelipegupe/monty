@@ -27,5 +27,5 @@ void parse(char *buff, stack_t **stack, unsigned int line_number)
  */
 int check_digit(int chr)
 {
-	return ((c >= '0' && c <= '9') ? 1 : 0);
+	return ((chr >= '0' && chr <= '9') ? 1 : 0);
 }
