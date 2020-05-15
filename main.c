@@ -30,7 +30,7 @@ int main(int argc, char *argv[])
 	while ((read = getline(&glob.buf, &len, glob.fil)) != EOF)
 	{
 		line_number++;
-		split(glob.buf, &stack, line_number);
+		parse(glob.buf, &stack, line_number);
 	}
 	free_list(stack);
 	exit(EXIT_SUCCESS);
