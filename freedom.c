@@ -1,4 +1,4 @@
-include "monty.h"
+#include "monty.h"
 /**
  * free_list - function that frees a list.
  * @stack: list to be freed.
