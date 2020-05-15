@@ -1,5 +1,5 @@
-#ifndef __MONTY__H
-#define __MONTY__H
+#ifndef _MONTY_H
+#define _MONTY_H
 
 #include <stdio.h>
 #include <string.h>
@@ -66,4 +66,4 @@ void parse(char *buff, stack_t **stack, unsigned int line_number);
 int check_digit(int chr);
 void add_h(stack_t **stack, unsigned int line_number);
 
-#endif /*__MONTY__H*/
+#endif /*_MONTY_H*/
